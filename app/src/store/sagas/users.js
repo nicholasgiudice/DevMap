@@ -1,17 +1,18 @@
 import { call, put } from 'redux-saga/effects';
-
+import api from '../../services/githubApi';
 import { Creators as UsersActions } from '../ducks/users';
 
 export function* addUser(action) {
   try {
-    // const { data } = yield call(api.get, `/repos/${action.payload.repository}`);
-    const bla = action;
+    const { data } = yield call(api.get, `/users/${action.payload.githubName}`);
+
     const repositoryDate = {
-      id: 7093442,
-      login: 'nicholasgiudice',
-      name: 'Nicholas Giudice',
-      avatar_url: 'https://avatars1.githubusercontent.com/u/7093442?v=4',
-      bla,
+      id: data.id,
+      login: data.login,
+      name: data.name,
+      avatar_url: data.avatar_url,
+      longitude: action.payload.longitude,
+      latitude: action.payload.latitude,
     };
 
     yield put(UsersActions.addUserSuccess(repositoryDate));

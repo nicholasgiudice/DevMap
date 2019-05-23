@@ -13,6 +13,8 @@ const INITIAL_STATE = [
     login: 'nicholasgiudice',
     name: 'Nicholas Giudice',
     avatar_url: 'https://avatars1.githubusercontent.com/u/7093442?v=4',
+    latitude: -22.81495999526067,
+    longitude: -47.01483266147573,
   },
 ];
 
@@ -25,6 +27,7 @@ export default function users(state = INITIAL_STATE, action) {
       return [...state, action.payload.data];
 
     case Types.ADD_FAILURE:
+      alert(action.payload.error);
       return state;
 
     default:
@@ -37,9 +40,9 @@ export default function users(state = INITIAL_STATE, action) {
  */
 
 export const Creators = {
-  addUserRequest: user => ({
+  addUserRequest: (githubName, longitude, latitude) => ({
     type: Types.ADD_REQUEST,
-    payload: { user },
+    payload: { githubName, longitude, latitude },
   }),
 
   addUserSuccess: data => ({
