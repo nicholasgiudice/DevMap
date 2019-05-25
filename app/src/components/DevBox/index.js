@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Container } from './styles';
 import User from '../User';
+import './styles.css';
 
 const DevBox = ({ users }) => (
-  <Container>
+  <div className="devMap-container">
     {users.map(user => (
       <User key={user.id} user={user} />
     ))}
-  </Container>
+  </div>
 );
 
 const mapStateToProps = state => ({

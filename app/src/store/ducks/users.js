@@ -1,3 +1,5 @@
+import { toast } from 'react-toastify';
+
 /*
  * Types
  */
@@ -7,16 +9,7 @@ export const Types = {
   ADD_FAILURE: 'users/ADD_FAILURE',
 };
 
-const INITIAL_STATE = [
-  {
-    id: 7093442,
-    login: 'nicholasgiudice',
-    name: 'Nicholas Giudice',
-    avatar_url: 'https://avatars1.githubusercontent.com/u/7093442?v=4',
-    latitude: -22.81495999526067,
-    longitude: -47.01483266147573,
-  },
-];
+const INITIAL_STATE = [];
 
 export default function users(state = INITIAL_STATE, action) {
   switch (action.type) {
@@ -24,10 +17,15 @@ export default function users(state = INITIAL_STATE, action) {
       return state;
 
     case Types.ADD_SUCCESS:
+      toast.success('Usuário adicionado com sucesso!', {
+        position: toast.POSITION.TOP_RIGHT,
+      });
       return [...state, action.payload.data];
 
     case Types.ADD_FAILURE:
-      alert(action.payload.error);
+      toast.error('Usuário não encontrado', {
+        position: toast.POSITION.TOP_RIGHT,
+      });
       return state;
 
     default:

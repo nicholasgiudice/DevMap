@@ -1,12 +1,16 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { Avatar } from './styles';
+import './styles.css';
 
 const User = ({ user }) => (
-  <div>
-    <Avatar src={user.avatar_url} />
-    <p>{user.name}</p>
-    <p>{user.login}</p>
+  <div className="user-container">
+    <img className="avatar" alt={user.name} src={user.avatar_url} />
+    <div className="info-container">
+      <strong className="name">{user.name}</strong>
+      <small className="login">{user.login}</small>
+    </div>
+    <button className="delete-button" type="button">
+      <i className="fa fa-times" />
+    </button>
   </div>
 );
 

@@ -1,0 +1,53 @@
+.user-container {
+  height: 70px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.user-container:hover {
+  background-color: #fafafa;
+}
+
+.avatar {
+  margin: 11px;
+  width: 48px;
+  height: 48px;
+  border-radius: 100px;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.name {
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+  font-family: sans-serif;
+  color: #808080;
+  font-size: 18px;
+}
+
+.login {
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+  font-family: sans-serif;
+  color: #808080;
+  font-size: 12px;
+}
+
+.delete-button {
+  width: 15px;
+  border-radius: 48px;
+  border: none;
+  background: none;
+  background-color: #f00;
+  color: #fff;
+  margin-left: 30px;
+}
+
+.delete-button:hover {
+  opacity: 0.5;
+}

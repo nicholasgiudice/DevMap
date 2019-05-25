@@ -66,47 +66,47 @@ class Main extends Component {
   handleMapClick = e => {
     const [longitude, latitude] = e.lngLat;
     this.setState({ longitude, latitude });
-    toast.success('Success Notification !', {
-      position: toast.POSITION.TOP_RIGHT,
-    });
     this.openModal();
   };
 
   render() {
     console.log(this.props.users);
     return (
-      <MapGL
-        {...this.state.viewport}
-        onClick={this.handleMapClick}
-        mapStyle="mapbox://styles/mapbox/basic-v9"
-        mapboxApiAccessToken={mapBoxToken}
-        onViewportChange={viewport => this.setState({ viewport })}
-      >
-        {this.props.users.map(user => (
-          <Marker
-            key={user.id}
-            latitude={user.latitude}
-            longitude={user.longitude}
-            captureClick={false}
-          >
-            <img
-              style={{
-                borderRadius: 100,
-                width: 48,
-                height: 48,
-              }}
-              src={user.avatar_url}
-            />
-          </Marker>
-        ))}
-        <ToastContainer />
-        <DevBox />
-        <GitModal
-          modalIsOpen={this.state.modalIsOpen}
-          closeModal={this.closeModal}
-          handleAddButton={this.handleAddButton}
-        />
-      </MapGL>
+      <div>
+        <MapGL
+          {...this.state.viewport}
+          onClick={this.handleMapClick}
+          mapStyle="mapbox://styles/mapbox/basic-v9"
+          mapboxApiAccessToken={mapBoxToken}
+          onViewportChange={viewport => this.setState({ viewport })}
+        >
+          {this.props.users.map(user => (
+            <Marker
+              key={user.id}
+              latitude={user.latitude}
+              longitude={user.longitude}
+              captureClick={false}
+            >
+              <img
+                style={{
+                  borderRadius: 100,
+                  width: 48,
+                  height: 48,
+                }}
+                src={user.avatar_url}
+              />
+            </Marker>
+          ))}
+          <ToastContainer />
+          <DevBox />
+
+          <GitModal
+            modalIsOpen={this.state.modalIsOpen}
+            closeModal={this.closeModal}
+            handleAddButton={this.handleAddButton}
+          />
+        </MapGL>
+      </div>
     );
   }
 }
