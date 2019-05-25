@@ -70,7 +70,6 @@ class Main extends Component {
   };
 
   render() {
-    console.log(this.props.users);
     return (
       <div>
         <MapGL
@@ -80,6 +79,7 @@ class Main extends Component {
           mapboxApiAccessToken={mapBoxToken}
           onViewportChange={viewport => this.setState({ viewport })}
         >
+          <DevBox captureClick={false} />
           {this.props.users.map(user => (
             <Marker
               key={user.id}
@@ -97,8 +97,6 @@ class Main extends Component {
               />
             </Marker>
           ))}
-          <ToastContainer />
-          <DevBox />
 
           <GitModal
             modalIsOpen={this.state.modalIsOpen}
@@ -106,6 +104,7 @@ class Main extends Component {
             handleAddButton={this.handleAddButton}
           />
         </MapGL>
+        <ToastContainer />
       </div>
     );
   }
